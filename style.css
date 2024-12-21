@@ -1,0 +1,222 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin-top: 10px;
+  font-size: 3em;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+p {
+  max-width: 700px;
+  text-align: center;
+  margin: 10px auto;
+  font-size: 1.2em;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* les porte */
+.doors-container {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+  perspective: 1000px;
+}
+
+.door {
+  position: relative;
+  width: 150px;
+  height: 250px;
+  background: #2c3e50;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.door:hover {
+  transform: scale(1.1) rotateY(10deg);
+}
+
+.door.selected {
+  border: 4px solid #e67e22;
+}
+
+.door.opened {
+  transform: rotateY(-180deg);
+}
+
+.door::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #34495e;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.door::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ecf0f1;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.door.opened::after {
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.label {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.hidden-prize,
+.hidden-goat {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  display: none;
+}
+
+.door.opened .hidden-prize,
+.door.opened .hidden-goat {
+  display: block;
+  animation: popIn 0.5s forwards;
+}
+
+@keyframes popIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.controls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 25px;
+  background: #e74c3c;
+  color: #fff;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+button:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.results {
+  margin-top: 20px;
+  font-size: 1.2em;
+  padding: 20px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.simulation-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="number"] {
+  padding: 8px;
+  font-size: 1em;
+  width: 150px;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .doors-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .door {
+    width: 120px;
+    height: 200px;
+  }
+
+  .hidden-prize,
+  .hidden-goat {
+    width: 60%;
+    height: 60%;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  input[type="number"] {
+    width: 120px;
+  }
+}
