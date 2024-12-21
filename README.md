@@ -38,9 +38,6 @@ Pour utiliser l'application du paradoxe de Monty Hall, suivez ces étapes simple
 
 Le paradoxe de Monty Hall montre l'importance de revoir nos intuitions face aux probabilités. En changeant de porte après la révélation d'une chèvre, vous doublez vos chances de gagner la voiture.
 
-## Capture d'Écran
-
-![Interface de l'application](https://i.imgur.com/7nYTZTS.png)
 
 ## Technologies Utilisées
 
