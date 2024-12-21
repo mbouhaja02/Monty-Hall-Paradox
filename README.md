@@ -48,5 +48,5 @@ Le paradoxe de Monty Hall montre l'importance de revoir nos intuitions face aux 
 
 ## Auteur
 
-**Votre Nom**
+BOUHAJA Mohammed
 
